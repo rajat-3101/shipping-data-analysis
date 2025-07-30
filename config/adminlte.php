@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Shipping',
+    'title' => 'Vessel',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -303,37 +303,37 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'Organisation',
-            'url' => '#',
+            'text' => 'Organization',
+            'url' => 'organization-management',
             'icon' => 'fas fa-fw fa-globe',
         ],
         [
-            'text' => 'Ships Management',
-            'url' => 'ship-management',
-            'icon' => 'fas fa-fw fa-ship',
+            'text' => 'Vessels Management',
+            'url' => 'vessel-management',
+            'icon' => 'fas fa-fw fa-vessel',
               'submenu' => [
-                [
-                    'text' => 'Add Ship',
-                    'url' => '#',
+                 [
+                    'text' => 'Vessels',
+                    'url' => 'vessel-management',
                     'icon' => 'fas fa-fw fa-plus',
                 ],
                 [
-                    'text' => 'Edit Ship',
+                    'text' => 'Add Vessels',
+                    'url' => 'vessel-management/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                ],
+                [
+                    'text' => 'Edit Vessel',
                     'url' => '#',
                     'icon' => 'fas fa-fw fa-edit',
                     
-                ],
-                [
-                    'text' => 'Delete Ship',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-trash',
                 ],
             ],
             
         ],
       
         [
-            'text' => 'Ship Data',
+            'text' => 'Vessel Data',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-database',
         ],

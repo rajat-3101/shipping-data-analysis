@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+@section('title','Organization')
 
 @section('content')
 
@@ -61,7 +62,7 @@
     </div>
 </div>
 
-@endsection
+@stop
 @section('js')
   <script src="{{ mix('js/admin-panel/categories_management.js')}}" type="text/javascript"></script>
 @endsection
