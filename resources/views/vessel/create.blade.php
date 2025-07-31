@@ -45,7 +45,7 @@
                             {{-- Vessel Name --}}
                             <div class="mb-3">
                                 <label for="vessel_name" class="form-label">Vessel Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="vessel_name" name="vessel_name" required>
+                                <input type="text" class="form-control" id="vessel_name" name="vessel_name" required placeholder="Enter Vessel Name">
                             </div>
 
                             {{-- Flag (Country dropdown) --}}
@@ -78,27 +78,27 @@
                         <div class="col-md-6">
                             {{-- IMO No. --}}
                             <div class="mb-3">
-                                <label for="imo_no" class="form-label">IMO No.</label>
-                               <input type="text" class="form-control" id="imo_no" name="imo_no" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <label for="imo_no" class="form-label">IMO No.<span class="text-danger">*</span></label>
+                               <input type="text" class="form-control" id="imo_no" name="imo_no"  oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Enter IMO Number" required>
 
                             </div>
 
                             {{-- Owner --}}
                             <div class="mb-3">
-                                <label for="owner" class="form-label">Owner</label>
-                                <input type="text" class="form-control" id="owner" name="owner">
+                                <label for="operation_manager_email" class="form-label">Operation Manager Email<span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="operation_manager_email" name="operation_manager_email" required placeholder="Enter email address">
                             </div>
 
                             {{-- Commercial Manager --}}
                             <div class="mb-3">
-                                <label for="commercial_manager" class="form-label">Operation Manager</label>
-                                <input type="text" class="form-control" id="commercial_manager" name="commercial_manager">
+                                <label for="operation_manager" class="form-label">Operation Manager</label>
+                                <input type="text" class="form-control" id="operation_manager" name="operation_manager">
                             </div>
 
                             {{-- Technical Manager --}}
                             <div class="mb-3">
-                                <label for="technical_manager" class="form-label">Technical Manager</label>
-                                <input type="text" class="form-control" id="technical_manager" name="technical_manager">
+                                <label for="password" class="form-label">Password<span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
                         </div>
                     </div>
@@ -459,7 +459,7 @@ function changeStep(direction) {
 function validateCurrentStep() {
     if (currentStep === 1) {
         // Validate required fields in step 1
-        const requiredFields = ['organization_id', 'vessel_name', 'flag', 'vessel_type'];
+        const requiredFields = ['organization_id', 'vessel_name', 'flag', 'vessel_type','imo_no', 'operation_manager_email','password'];
         for (let field of requiredFields) {
             const element = document.getElementById(field);
             if (!element.value.trim()) {

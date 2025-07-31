@@ -23,9 +23,7 @@ return new class extends Migration
             $table->string('flag', 100);
             $table->string('vessel_type', 100);
             $table->string('imo_no', 20)->nullable();
-            $table->string('owner')->nullable();
-            $table->string('commercial_manager')->nullable();
-            $table->string('technical_manager')->nullable();
+            $table->string('operation_manager')->nullable();
             
             // Technical Details (Step 2)
             $table->decimal('dwt', 12, 2)->nullable()->comment('Deadweight Ton');

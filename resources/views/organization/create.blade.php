@@ -31,12 +31,17 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Contact Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="test@example.com" required>
+                </div>
+
+                 <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="contact_number" class="form-label">Contact Phone</label>
-                    <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="+1-123-456-7890">
+                    <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="+1 234 567 8900" required>
                 </div>
 
                 <button type="submit" class="btn btn-success">Register Organization</button>
