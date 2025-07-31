@@ -39,11 +39,23 @@ class OrganizationController extends Controller
     {
         try {
             $organization = $this->organizationService->create($request->all());
-            return response()->json($organization, Response::HTTP_CREATED);
+            return redirect()->route('organization-management.index');
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error creating organization: ' . $e->getMessage()], 500);
         }
     }
+
+     public function edit($id)
+    {
+        try {
+            $Organizations = Organization::all();
+            return view('organization.edit', compact( 'Organizations'));
+        } catch (\Exception $e) {
+            dd($e);
+            return redirect()->back()->withErrors('Error loading edit form: ' . $e->getMessage());
+        }
+    }
+
 
     public function update(Request $request, $id)
     {
@@ -59,7 +71,7 @@ class OrganizationController extends Controller
     {
         try {
             $this->organizationService->delete($id);
-            return response()->json(['message' => 'Organization deleted successfully']);
+            return redirect()->route('organization-management.index')->with('success', 'Vessel deleted successfully.');
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error deleting organization: ' . $e->getMessage()], 500);
         }

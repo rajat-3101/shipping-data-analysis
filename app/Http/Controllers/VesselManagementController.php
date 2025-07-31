@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FuelOilType;
 use App\Models\Organization;
 use Illuminate\Http\Request;
-use App\Services\VesselService;
+use App\Models\MachineryType;
 use Illuminate\Http\Response;
+use App\Services\VesselService;
+use App\Models\LubricatingOilType;
 
 class VesselManagementController extends Controller
 {
@@ -28,17 +31,25 @@ class VesselManagementController extends Controller
         }
     }
 
-    public function create()
-    {
-        try {
-            $Organizations = Organization::all();
-            return view('vessel.create', compact('Organizations'));
-        } catch (\Exception $e) {
-            dd($e);
-            return redirect()->back()->withErrors('Error loading create form: ' . $e->getMessage());
-        }
+   public function create()
+{
+    try {
+        $Organizations = Organization::all();
+        $fuelOilTypes = FuelOilType::orderBy('name')->get();
+        $lubricatingOilTypes = LubricatingOilType::orderBy('name')->get();
+        $machineryTypes = MachineryType::orderBy('name')->get();
+        
+        return view('vessel.create', compact(
+            'Organizations', 
+            'fuelOilTypes', 
+            'lubricatingOilTypes', 
+            'machineryTypes'
+        ));
+    } catch (\Exception $e) {
+        \Log::error('Error loading vessel create form: ' . $e->getMessage());
+        return redirect()->back()->withErrors('Error loading create form: ' . $e->getMessage());
     }
-
+}
     public function store(Request $request)
     {
         try {
@@ -54,7 +65,11 @@ class VesselManagementController extends Controller
     {
         try {
             $vessel = $this->vesselService->find($id);
-            return view('vessel.edit', compact('vessel'));
+            $Organizations = Organization::all();
+            $fuelOilTypes = FuelOilType::orderBy('name')->get();
+            $lubricatingOilTypes = LubricatingOilType::orderBy('name')->get();
+            $machineryTypes = MachineryType::orderBy('name')->get();
+            return view('vessel.edit', compact('vessel', 'Organizations', 'fuelOilTypes', 'lubricatingOilTypes', 'machineryTypes'));
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back()->withErrors('Error loading edit form: ' . $e->getMessage());

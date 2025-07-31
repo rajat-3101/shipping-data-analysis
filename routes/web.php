@@ -15,6 +15,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['middleware'=> ["auth"]], function(){
 
+   
     Route::resource('organization-management', OrganizationController::class);
     Route::resource('vessel-management', VesselManagementController::class);
 });

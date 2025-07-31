@@ -310,25 +310,14 @@ return [
         [
             'text' => 'Vessels Management',
             'url' => 'vessel-management',
-            'icon' => 'fas fa-fw fa-vessel',
-              'submenu' => [
-                 [
-                    'text' => 'Vessels',
-                    'url' => 'vessel-management',
-                    'icon' => 'fas fa-fw fa-plus',
-                ],
-                [
-                    'text' => 'Add Vessels',
-                    'url' => 'vessel-management/create',
-                    'icon' => 'fas fa-fw fa-plus',
-                ],
-                [
-                    'text' => 'Edit Vessel',
-                    'url' => '#',
-                    'icon' => 'fas fa-fw fa-edit',
-                    
-                ],
-            ],
+            'icon' => 'fas fa-fw fa-ship',
+            //   'submenu' => [
+            //      [
+            //         'text' => 'Vessels',
+            //         'url' => 'vessel-management',
+            //         'icon' => 'fas fa-fw fa-plus',
+            //     ],
+            // ],
             
         ],
       

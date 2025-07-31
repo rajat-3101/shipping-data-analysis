@@ -17,9 +17,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
+        
+            // Add organization relationship - nullable because admins don't belong to specific organizations
+            $table->foreignId('organization_id')->nullable()->constrained('organizations')->onDelete('cascade');
+        
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+    
+            // Index for faster queries
+            $table->index(['role_id', 'organization_id']);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

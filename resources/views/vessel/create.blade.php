@@ -33,8 +33,8 @@
                         <div class="col-md-6">
                             {{-- Organization ID as dropdown --}}
                             <div class="mb-3">
-                                <label for="Organization_id" class="form-label">Organization <span class="text-danger">*</span></label>
-                                <select name="Organization_id" id="Organization_id" class="form-control" required>
+                                <label for="organization_id" class="form-label">Organization <span class="text-danger">*</span></label>
+                                <select name="organization_id" id="organization_id" class="form-control" required>
                                     <option value="">Select Organization</option>
                                     @foreach($Organizations as $org)
                                         <option value="{{ $org->id }}">{{ $org->name }}</option>
@@ -79,7 +79,8 @@
                             {{-- IMO No. --}}
                             <div class="mb-3">
                                 <label for="imo_no" class="form-label">IMO No.</label>
-                                <input type="text" class="form-control" id="imo_no" name="imo_no">
+                               <input type="text" class="form-control" id="imo_no" name="imo_no" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
                             </div>
 
                             {{-- Owner --}}
@@ -90,7 +91,7 @@
 
                             {{-- Commercial Manager --}}
                             <div class="mb-3">
-                                <label for="commercial_manager" class="form-label">Commercial Manager</label>
+                                <label for="commercial_manager" class="form-label">Operation Manager</label>
                                 <input type="text" class="form-control" id="commercial_manager" name="commercial_manager">
                             </div>
 
@@ -166,7 +167,7 @@
                         <div class="col-md-6">
                             {{-- Yard --}}
                             <div class="mb-3">
-                                <label for="yard" class="form-label">Yard</label>
+                                <label for="yard" class="form-label">Delivery Yard</label>
                                 <input type="text" class="form-control" id="yard" name="yard">
                             </div>
 
@@ -184,7 +185,7 @@
 
                             {{-- Next Special Survey/Dry Dock --}}
                             <div class="mb-3">
-                                <label for="next_special_survey" class="form-label">Next Special Survey/Dry Dock</label>
+                                <label for="next_special_survey" class="form-label">Dry Dock</label>
                                 <input type="text" class="form-control" id="next_special_survey" name="next_special_survey">
                             </div>
 
@@ -320,56 +321,16 @@
                     <div class="mb-4">
                         <label class="form-label"><strong>Fuel Oil Type</strong></label>
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="LNG" id="fuel_lng">
-                                    <label class="form-check-label" for="fuel_lng">LNG</label>
+                            @foreach($fuelOilTypes->chunk(ceil($fuelOilTypes->count()/3)) as $chunk)
+                                <div class="col-md-4">
+                                    @foreach($chunk as $fuel)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="{{ $fuel->id }}" id="fuel_{{ Str::slug($fuel->name, '_') }}">
+                                            <label class="form-check-label" for="fuel_{{ Str::slug($fuel->name, '_') }}">{{ $fuel->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="HFO" id="fuel_hfo">
-                                    <label class="form-check-label" for="fuel_hfo">HFO</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="LFO" id="fuel_lfo">
-                                    <label class="form-check-label" for="fuel_lfo">LFO</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="MDO" id="fuel_mdo">
-                                    <label class="form-check-label" for="fuel_mdo">MDO</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="MGO" id="fuel_mgo">
-                                    <label class="form-check-label" for="fuel_mgo">MGO</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="LPG (Propane)" id="fuel_lpg_propane">
-                                    <label class="form-check-label" for="fuel_lpg_propane">LPG (Propane)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="LPG (Butane)" id="fuel_lpg_butane">
-                                    <label class="form-check-label" for="fuel_lpg_butane">LPG (Butane)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="Methanol" id="fuel_methanol">
-                                    <label class="form-check-label" for="fuel_methanol">Methanol</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="Ethanol" id="fuel_ethanol">
-                                    <label class="form-check-label" for="fuel_ethanol">Ethanol</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="B23" id="fuel_b23">
-                                    <label class="form-check-label" for="fuel_b23">B23</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="fuel_oil_type[]" value="Others" id="fuel_others">
-                                    <label class="form-check-label" for="fuel_others">Others</label>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -377,38 +338,16 @@
                     <div class="mb-4">
                         <label class="form-label"><strong>Lubricating Oil Type</strong></label>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="M/E Cylinder Oil" id="lubricating_me_cylinder">
-                                    <label class="form-check-label" for="lubricating_me_cylinder">M/E Cylinder Oil</label>
+                            @foreach($lubricatingOilTypes->chunk(ceil($lubricatingOilTypes->count()/3)) as $chunk)
+                                <div class="col-md-4">
+                                    @foreach($chunk as $lube)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="{{ $lube->id }}" id="lubricating_{{ Str::slug($lube->name, '_') }}">
+                                            <label class="form-check-label" for="lubricating_{{ Str::slug($lube->name, '_') }}">{{ $lube->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="M/E Cylinder Oil (Low Sulfur)" id="lubricating_me_cylinder_low">
-                                    <label class="form-check-label" for="lubricating_me_cylinder_low">M/E Cylinder Oil (Low Sulfur)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="M/E System Oil" id="lubricating_me_system">
-                                    <label class="form-check-label" for="lubricating_me_system">M/E System Oil</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="M/E Sump Tank" id="lubricating_me_sump">
-                                    <label class="form-check-label" for="lubricating_me_sump">M/E Sump Tank</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="G/E System Oil" id="lubricating_ge_system">
-                                    <label class="form-check-label" for="lubricating_ge_system">G/E System Oil</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="TG System Oil" id="lubricating_tg_system">
-                                    <label class="form-check-label" for="lubricating_tg_system">TG System Oil</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="lubricating_oil_type[]" value="Others" id="lubricating_others">
-                                    <label class="form-check-label" for="lubricating_others">Others</label>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -416,38 +355,16 @@
                     <div class="mb-4">
                         <label class="form-label"><strong>Machinery</strong></label>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Main Engine" id="machinery_main_engine">
-                                    <label class="form-check-label" for="machinery_main_engine">Main Engine</label>
+                            @foreach($machineryTypes->chunk(ceil($machineryTypes->count()/3)) as $chunk)
+                                <div class="col-md-4">
+                                    @foreach($chunk as $machinery)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="machinery[]" value="{{ $machinery->id }}" id="machinery_{{ Str::slug($machinery->name, '_') }}">
+                                            <label class="form-check-label" for="machinery_{{ Str::slug($machinery->name, '_') }}">{{ $machinery->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Generator Engine" id="machinery_generator_engine">
-                                    <label class="form-check-label" for="machinery_generator_engine">Generator Engine</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Boiler" id="machinery_boiler">
-                                    <label class="form-check-label" for="machinery_boiler">Boiler</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Inert Gas Generator" id="machinery_inert_gas">
-                                    <label class="form-check-label" for="machinery_inert_gas">Inert Gas Generator</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Incinerator" id="machinery_incinerator">
-                                    <label class="form-check-label" for="machinery_incinerator">Incinerator</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Gas Combustion Unit" id="machinery_gas_combustion">
-                                    <label class="form-check-label" for="machinery_gas_combustion">Gas Combustion Unit</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="machinery[]" value="Others" id="machinery_others">
-                                    <label class="form-check-label" for="machinery_others">Others</label>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -542,7 +459,7 @@ function changeStep(direction) {
 function validateCurrentStep() {
     if (currentStep === 1) {
         // Validate required fields in step 1
-        const requiredFields = ['Organization_id', 'vessel_name', 'flag', 'vessel_type'];
+        const requiredFields = ['organization_id', 'vessel_name', 'flag', 'vessel_type'];
         for (let field of requiredFields) {
             const element = document.getElementById(field);
             if (!element.value.trim()) {
