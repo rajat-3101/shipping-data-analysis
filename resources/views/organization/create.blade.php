@@ -1,0 +1,57 @@
+@extends('adminlte::page')
+
+@section('title','Organization')
+
+@section('content')
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Register New Client</h4>
+        </div>
+
+        <div class="card-body">
+            <form action="{{ route('organization-management.store') }}" method="POST">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Organization Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Enter organization name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country of Registration</label>
+                    <input type="text" class="form-control" id="country" name="country" required placeholder="E.g. United States, Germany, India">
+                </div>
+
+                <div class="mb-3">
+                    <label for="website" class="form-label">Official Website</label>
+                    <input type="url" class="form-control" id="website" name="website" placeholder="https://example.org">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Contact Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="test@example.com" required>
+                </div>
+
+                 <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="contact_number" class="form-label">Contact Phone</label>
+                    <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="+1 234 567 8900" required>
+                </div>
+
+                <button type="submit" class="btn btn-success">Register Organization</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@stop
+@section('js')
+  {{-- <script src="{{ mix('js/admin-panel/categories_management.js')}}" type="text/javascript"></script> --}}
+@endsection
+
