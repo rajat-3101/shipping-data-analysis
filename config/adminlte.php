@@ -322,8 +322,13 @@ return [
         ],
       
         [
-            'text' => 'Vessel Data',
-            'url' => 'admin/settings',
+            'text' => 'Noon Report Data',
+            'url' => 'noon-report',
+            'icon' => 'fas fa-fw fa-database',
+        ],
+        [
+            'text' => 'Voyages',
+            'url' => 'voyage',
             'icon' => 'fas fa-fw fa-database',
         ],
         [

@@ -18,4 +18,6 @@ Route::group(['middleware'=> ["auth"]], function(){
    
     Route::resource('organization-management', OrganizationController::class);
     Route::resource('vessel-management', VesselManagementController::class);
+    Route::resource('noon-report', App\Http\Controllers\NoonReportController::class);
+    Route::resource('voyage', App\Http\Controllers\VoyageController::class);
 });
