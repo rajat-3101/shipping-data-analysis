@@ -8,6 +8,8 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\FuelEmissionSeeder;
+use Database\Seeders\ShipCategorySeeder;
+use Database\Seeders\ShipCoefficientSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             VesselReferenceDataSeeder::class,
             FuelEmissionSeeder::class,
+            VesselCategorySeeder::class,
+            VesselCoefficientSeeder::class,
         ]);
     }
 }

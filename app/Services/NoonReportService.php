@@ -21,9 +21,9 @@ class NoonReportService
         $processedData = $data;
 
         // Automatically set created_by to current authenticated user if not provided
-        if (! isset($processedData['created_by'])) {
-            $processedData['created_by'] = auth()->id();
-        }
+
+        $processedData['created_by'] = auth()->id();
+
         // dd($processedData);
         return NoonReport::create($processedData);
     }

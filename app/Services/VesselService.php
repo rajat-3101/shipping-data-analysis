@@ -17,28 +17,28 @@ class VesselService
     {
         // dd($request);
         try {
-           
-        // If a single user is provided (for manager/user creation)
-        if (isset($request['vessel_name']) && isset($request['operation_manager_email']) && isset($request['password'])) {
-            $user = User::create([
-                'name' => $request['vessel_name'],
-                'email' => $request['operation_manager_email'],
-                'password' => Hash::make($request['password']),
-                'role_id' => config('constants.ROLES.USER'), // Default to User
-                'organization_id' => $request['organization_id'],
-            ]);
-        }
-            // dd($user);
+
+            // If a single user is provided (for manager/user creation)
+            if (isset($request['vessel_name']) && isset($request['operation_manager_email']) && isset($request['password'])) {
+                $user = User::create([
+                    'name'            => $request['vessel_name'],
+                    'email'           => $request['operation_manager_email'],
+                    'password'        => Hash::make($request['password']),
+                    'role_id'         => config('constants.ROLES.USER'), // Default to User
+                    'organization_id' => $request['organization_id'],
+                ]);
+            }
+            // dd($request['vessel_category_id']);
             // Create the vessel
             $vessel = Vessel::create([
                 'organization_id'      => $request['organization_id'],
                 'user_id'              => $user->id, // Add user assignment
                 'vessel_name'          => $request['vessel_name'],
                 'flag'                 => $request['flag'],
-                'vessel_type'          => $request['vessel_type'],
+                'vessel_category_id'   => $request['vessel_category_id'],
                 'imo_no'               => $request['imo_no'] ?? null,
                 'owner'                => $request['owner'] ?? null,
-                'operation_manager'   => $request['operation_manager'] ?? null,
+                'operation_manager'    => $request['operation_manager'] ?? null,
                 'dwt'                  => $request['dwt'] ?? null,
                 'gt'                   => $request['gt'] ?? null,
                 'nt'                   => $request['nt'] ?? null,

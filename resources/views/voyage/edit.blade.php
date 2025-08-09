@@ -63,6 +63,10 @@
                     <label for="remarks" class="form-label">Remarks</label>
                     <textarea class="form-control" id="remarks" name="remarks" rows="3">{{ $voyage->remarks }}</textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="voyage_name" class="form-label">Voyage Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="voyage_name" name="voyage_name" value="{{ $voyage->voyage_name }}" required>
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-success">Update Voyage</button>

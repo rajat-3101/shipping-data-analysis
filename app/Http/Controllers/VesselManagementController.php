@@ -7,6 +7,7 @@ use App\Models\Organization;
 use Illuminate\Http\Request;
 use App\Models\MachineryType;
 use Illuminate\Http\Response;
+use App\Models\VesselCategory;
 use App\Services\VesselService;
 use App\Models\LubricatingOilType;
 
@@ -38,12 +39,14 @@ class VesselManagementController extends Controller
         $fuelOilTypes = FuelOilType::orderBy('name')->get();
         $lubricatingOilTypes = LubricatingOilType::orderBy('name')->get();
         $machineryTypes = MachineryType::orderBy('name')->get();
+        $vesselCategories = VesselCategory::orderBy('name')->get();
         
         return view('vessel.create', compact(
             'Organizations', 
             'fuelOilTypes', 
             'lubricatingOilTypes', 
-            'machineryTypes'
+            'machineryTypes',
+            'vesselCategories'
         ));
     } catch (\Exception $e) {
         \Log::error('Error loading vessel create form: ' . $e->getMessage());

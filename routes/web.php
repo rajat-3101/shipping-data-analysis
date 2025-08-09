@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CIIController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\VesselManagementController;
 
@@ -20,4 +21,6 @@ Route::group(['middleware'=> ["auth"]], function(){
     Route::resource('vessel-management', VesselManagementController::class);
     Route::resource('noon-report', App\Http\Controllers\NoonReportController::class);
     Route::resource('voyage', App\Http\Controllers\VoyageController::class);
+    Route::get('cii-rating', [CIIController::class, 'index']);
+    Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });

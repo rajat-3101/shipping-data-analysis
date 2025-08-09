@@ -8,7 +8,7 @@ class Voyage extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id']; // voyage_name is mass assignable
 
     public function vessel()
     {

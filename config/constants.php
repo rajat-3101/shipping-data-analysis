@@ -15,4 +15,5 @@ return [
     'ADMIN_PASSWORD' => env('ADMIN_PASSWORD'),
     'USER_EMAIL' => env('USER_EMAIL'),
     'USER_PASSWORD' => env('USER_PASSWORD'),
+    'REDUCTION_FACTOR' => env('REDUCTION_FACTOR'), 
 ];
