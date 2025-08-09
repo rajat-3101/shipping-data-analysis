@@ -20,7 +20,7 @@
                     {{-- {{ dd($report->createdBy->name) }} --}}
                     <td>{{ $report->id }}</td>
                     <td>{{ $report->vessel->vessel_name ?? '-' }}</td>
-                    <td>{{ $report->voyage->name ?? '-' }}</td>
+                    <td>{{ $report->voyage->voyage_name ?? '-' }}</td>
                     <td>{{ $report->report_date }}</td>
                     <td>{{ $report->createdBy->name ?? '-' }}</td>
                     <td>

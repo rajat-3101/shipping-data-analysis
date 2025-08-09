@@ -61,6 +61,16 @@
 
                             {{-- Vessel Type (dropdown) --}}
                             <div class="mb-3">
+                                <label for="vessel_category_id" class="form-label">Vessel Category <span class="text-danger">*</span></label>
+                                <select name="vessel_category_id" id="vessel_category_id" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    @foreach($vesselCategories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                              {{-- <div class="mb-3">
                                 <label for="vessel_type" class="form-label">Vessel Type <span class="text-danger">*</span></label>
                                 <select name="vessel_type" id="vessel_type" class="form-control" required>
                                     <option value="">Select Type</option>
@@ -72,7 +82,7 @@
                                     <option value="Ro-Ro">Ro-Ro</option>
                                     <option value="Other">Other</option>
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="col-md-6">
@@ -459,9 +469,10 @@ function changeStep(direction) {
 function validateCurrentStep() {
     if (currentStep === 1) {
         // Validate required fields in step 1
-        const requiredFields = ['organization_id', 'vessel_name', 'flag', 'vessel_type','imo_no', 'operation_manager_email','password'];
+        const requiredFields = ['organization_id', 'vessel_name', 'flag', 'vessel_category_id', 'imo_no', 'operation_manager_email', 'password'];
         for (let field of requiredFields) {
             const element = document.getElementById(field);
+            // if (!element) continue; // Skip if element not found
             if (!element.value.trim()) {
                 element.focus();
                 alert('Please fill in all required fields marked with *');

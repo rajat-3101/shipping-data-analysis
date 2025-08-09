@@ -1,25 +1,25 @@
 <?php
-
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\VesselCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vessel extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [
-        "id"
+        "id",
     ];
 
     protected $casts = [
         'date_of_delivery' => 'date',
-        'dwt' => 'decimal:2',
-        'gt' => 'decimal:2',
-        'nt' => 'decimal:2',
+        'dwt'              => 'decimal:2',
+        'gt'               => 'decimal:2',
+        'nt'               => 'decimal:2',
     ];
 
     // Relationships
@@ -48,9 +48,20 @@ class Vessel extends Model
             ->withPivot('quantity', 'specifications', 'notes')
             ->withTimestamps();
     }
-    
-    public function user() {
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function noonReports()
+    {
+        return $this->hasMany(NoonReport::class);
+    }
+
+     public function vesselCategory()
+    {
+        return $this->belongsTo(VesselCategory::class);
     }
     // Scopes
     // public function scopeByVesselType($query, $type)

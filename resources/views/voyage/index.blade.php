@@ -8,6 +8,7 @@
             <tr>
                 <th>ID</th>
                 <th>Vessel</th>
+                <th>Voyage Name</th>
                 <th>Status</th>
                 <th>Port of Loading</th>
                 <th>Port of Discharge</th>
@@ -21,6 +22,7 @@
                 <tr>
                     <td>{{ $voyage->id }}</td>
                     <td>{{ $voyage->vessel->vessel_name ?? '-' }}</td>
+                    <td>{{ $voyage->voyage_name ?? '-' }}</td>
                     <td>@php $statuses = ['Planned','In Progress','Completed','Cancelled']; @endphp {{ $statuses[$voyage->voyage_status] ?? '-' }}</td>
                     <td>{{ $voyage->port_of_loading }}</td>
                     <td>{{ $voyage->port_of_discharge }}</td>

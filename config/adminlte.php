@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -63,12 +62,12 @@ return [
     |
     */
 
-    'logo' => '<b>Shipping</b>',
+    'logo' => '<b>Seavvy Tech</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Shipping',
+    'logo_img_alt' => 'Seavvy Tech',
 
     /*
     |--------------------------------------------------------------------------
@@ -303,6 +302,11 @@ return [
 
         // Sidebar items:
         [
+            'text' => 'Dashboard',
+            'url' => 'dashboard',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
+        ],
+        [
             'text' => 'Organization',
             'url' => 'organization-management',
             'icon' => 'fas fa-fw fa-globe',
@@ -311,24 +315,15 @@ return [
             'text' => 'Vessels Management',
             'url' => 'vessel-management',
             'icon' => 'fas fa-fw fa-ship',
-            //   'submenu' => [
-            //      [
-            //         'text' => 'Vessels',
-            //         'url' => 'vessel-management',
-            //         'icon' => 'fas fa-fw fa-plus',
-            //     ],
-            // ],
-            
-        ],
-      
-        [
-            'text' => 'Noon Report Data',
-            'url' => 'noon-report',
-            'icon' => 'fas fa-fw fa-database',
         ],
         [
             'text' => 'Voyages',
             'url' => 'voyage',
+            'icon' => 'fas fa-fw fa-plane',
+        ],
+        [
+            'text' => 'Noon Report Data',
+            'url' => 'noon-report',
             'icon' => 'fas fa-fw fa-database',
         ],
         [
@@ -340,12 +335,10 @@ return [
             'text' => 'Download',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-download',
-          
         ],
-        
         [
             'text' => 'CII RATING',
-            'url' => '#',
+            'url' => 'cii-rating',
             'icon' => 'fas fa-fw fa-star',
         ],
         [

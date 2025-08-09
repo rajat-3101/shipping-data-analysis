@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->tinyInteger('status')->default(1); // 1 => Active, 0 => Inactive
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
         
             // Add organization relationship - nullable because admins don't belong to specific organizations
