@@ -17,4 +17,11 @@ class CIIController extends Controller
             return response()->json(['error' => 'Error calculating CII: ' . $e->getMessage()], 500);
         }
     }
+
+    public function index(CIIService $ciiService)
+    {
+        $vessels = $ciiService->calculateCII();
+        return view('cii_rating.index',$vessels,compact('vessels'));
+        // return view('noon_report.create', compact('vessels', 'voyages', 'users'));
+    }
 }

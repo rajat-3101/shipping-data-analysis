@@ -5,7 +5,7 @@
     <div class="card shadow">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover align-middle">
+                <table class="table table-bordered table-hover align-middle" id="cii-ratings-table">
                     <thead class="table-primary">
                         <tr>
                             <th>#</th>
@@ -13,6 +13,7 @@
                             <th>IMO No.</th>
                             <th>Category</th>
                             <th>Deadweight (DWT)</th>
+                            <th>CII Rating Ratio</th>
                             <th>CII Rating</th>
                         </tr>
                     </thead>
@@ -24,9 +25,10 @@
                                 <td>{{ $vessel->imo_no }}</td>
                                 <td>{{ $vessel->vesselCategory->name ?? '-' }}</td>
                                 <td>{{ $vessel->dwt }}</td>
+                                <td>{{ $vessel->cii_rating_ratio }}</td>
                                 <td>
                                     @php
-                                        $rating = $vessel->cii_rating ?? '-';
+                                        $rating = $vessel->cii_rating_grade ?? '-';
                                     @endphp
                                     <span class="badge 
                                         @if($rating=='A') bg-success
@@ -51,3 +53,18 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+    $(document).ready(function() {
+        $('#cii-ratings-table').DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "pageLength": 10,
+            "order": [[0, "desc"]],
+            "columnDefs": [
+                { "targets": -1, "orderable": false, "searchable": false }
+            ]
+        });
+    });
+</script>
+@endpush

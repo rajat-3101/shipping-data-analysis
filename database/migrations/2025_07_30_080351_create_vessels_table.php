@@ -67,7 +67,7 @@ return new class extends Migration
             $table->string('laden', 50)->nullable();
 
             //CII RATING
-            $table->decimal('cii_rating_ration',5, 2)->nullable()->comment('CII Rating Ratio');
+            $table->decimal('cii_rating_ratio',5, 2)->nullable()->comment('CII Rating Ratio');
             $table->char('cii_rating_grade')->nullable()->comment('CII Rating Date');
 
             $table->softDeletes();
