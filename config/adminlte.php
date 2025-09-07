@@ -328,12 +328,12 @@ return [
         ],
         [
             'text' => 'Performance',
-            'url' => 'admin/settings',
+            'url' => 'performance',
             'icon' => 'fas fa-fw fa-chart-line',
         ],
         [
             'text' => 'Download',
-            'url' => 'admin/settings',
+            'url' => 'coming-soon',
             'icon' => 'fas fa-fw fa-download',
         ],
         [
@@ -343,7 +343,8 @@ return [
         ],
         [
             'text' => 'EU ETS',
-            'url' => 'eu-ets',
+            // 'url' => 'eu-ets',
+            'url' => 'coming-soon',
             'icon' => 'fas fa-fw fa-euro-sign',
         ],
         [

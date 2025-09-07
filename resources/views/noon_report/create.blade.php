@@ -140,8 +140,8 @@
                             <input type="number" step="any" class="form-control" id="avg_speed_since_last_og" name="avg_speed_since_last_og">
                         </div>
                         <div class="mb-3">
-                            <label for="avg_speed_since_last_log" class="form-label">Avg Speed Since Last Noon Report (Log) (Knots)</label>
-                            <input type="number" step="any" class="form-control" id="avg_speed_since_last_log" name="avg_speed_since_last_log">
+                            <label for="avg_speed_since_last_noon_report_log" class="form-label">Avg Speed Since Last Noon Report (Log) (Knots)</label>
+                            <input type="number" step="any" class="form-control" id="avg_speed_since_last_noon_report_log" name="avg_speed_since_last_noon_report_log">
                         </div>
                         <div class="mb-3">
                             <label for="average_engine_rpm_since_last_noon_report" class="form-label">Avg Engine RPM Since Last Noon Report</label>

@@ -28,7 +28,7 @@ Route::group(['middleware'=> ["auth"]], function(){
     Route::resource('report-upload', App\Http\Controllers\ReportUploadController::class)->only(['create', 'store']);
     Route::post('report-upload/import', [App\Http\Controllers\ReportUploadController::class, 'import'])->name('report-upload.import');
     Route::get('report-upload/voyages', [App\Http\Controllers\ReportUploadController::class, 'getVoyages']);
-   
-    // Route::view('coming-soon', 'coming_soon')->name('coming-soon');
+    Route::get('performance', [App\Http\Controllers\PerformanceController::class, 'index'])->name('performance.index');
+    Route::view('coming-soon', 'coming_soon')->name('coming-soon');
 });
 
