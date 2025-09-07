@@ -37,8 +37,22 @@
                             <input type="text" class="form-control" id="port_of_loading" name="port_of_loading" required>
                         </div>
                         <div class="mb-2">
+                            <label for="loading_port_eu" class="form-label">Loading Port in EU</label>
+                            <select name="loading_port_eu" id="loading_port_eu" class="form-control">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
                             <label for="port_of_discharge" class="form-label">Port of Discharge</label>
                             <input type="text" class="form-control" id="port_of_discharge" name="port_of_discharge" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="discharge_port_eu" class="form-label">Discharge Port in EU</label>
+                            <select name="discharge_port_eu" id="discharge_port_eu" class="form-control">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
                         </div>
                         <div class="mb-2">
                             <label for="departure" class="form-label">Departure</label>

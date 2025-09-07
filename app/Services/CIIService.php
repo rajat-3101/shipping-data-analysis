@@ -29,7 +29,7 @@ class CIIService
             if ($vessel->noonReports->count() > 0) {
 
                 //total distance traveled in nautical miles
-                $total_distance = $vessel->noonReports->sum('log_distance') ?? 0;
+                $total_distance = $vessel->noonReports->sum('log_distance');
 
                 //main engine fuel consumption
                 $me_hfo     = 0;
@@ -147,6 +147,7 @@ class CIIService
                     $rating = 'E';
                 }
 
+                // dd($ciiRatingRatio,$rating);
                 //update the cii ratio and rating in the vessel
                 $updatedVessel = Vessel::where('id', $vessel->id)
                     ->update([

@@ -343,7 +343,7 @@ return [
         ],
         [
             'text' => 'EU ETS',
-            'url' => '#',
+            'url' => 'eu-ets',
             'icon' => 'fas fa-fw fa-euro-sign',
         ],
         [

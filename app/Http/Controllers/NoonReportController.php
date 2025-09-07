@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Services\NoonReportService;
+use App\Models\User;
 use App\Models\Vessel;
 use App\Models\Voyage;
-use App\Models\User;
+use App\Services\NoonReportService;
 use Illuminate\Http\Request;
 
 class NoonReportController extends Controller
@@ -27,7 +26,7 @@ class NoonReportController extends Controller
     {
         $vessels = Vessel::all();
         $voyages = Voyage::all();
-        $users = User::all();
+        $users   = User::all();
         return view('noon_report.create', compact('vessels', 'voyages', 'users'));
     }
 
@@ -35,15 +34,16 @@ class NoonReportController extends Controller
     {
         $data = $request->all();
         $this->noonReportService->create($data);
-        return redirect()->route('noon-report.index')->with('success', 'Noon report created successfully.');
+        toastr()->success('Noon report created successfully.');
+        return redirect()->route('noon-report.index');
     }
 
     public function edit($id)
     {
         $noonReport = $this->noonReportService->find($id);
-        $vessels = Vessel::all();
-        $voyages = Voyage::all();
-        $users = User::all();
+        $vessels    = Vessel::all();
+        $voyages    = Voyage::all();
+        $users      = User::all();
         return view('noon_report.edit', compact('noonReport', 'vessels', 'voyages', 'users'));
     }
 
