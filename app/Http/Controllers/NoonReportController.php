@@ -38,6 +38,12 @@ class NoonReportController extends Controller
         return redirect()->route('noon-report.index');
     }
 
+    public function show($id)
+    {
+        $noonReport = \App\Models\NoonReport::with(['vessel', 'voyage', 'createdBy'])->findOrFail($id);
+        return view('noon_report.show', compact('noonReport'));
+    }
+
     public function edit($id)
     {
         $noonReport = $this->noonReportService->find($id);
@@ -57,6 +63,7 @@ class NoonReportController extends Controller
     public function destroy($id)
     {
         $this->noonReportService->delete($id);
-        return redirect()->route('noon-report.index')->with('success', 'Noon report deleted successfully.');
+        toastr()->success('Noon report deleted successfully.');
+        return redirect()->route('noon-report.index');
     }
 }

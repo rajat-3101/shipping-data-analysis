@@ -25,6 +25,7 @@
                     <td>{{ $report->report_date }}</td>
                     <td>{{ $report->createdBy->name ?? '-' }}</td>
                     <td>
+                        <a href="{{ route('noon-report.show', $report->id) }}" class="btn btn-sm btn-info">View</a>
                         <a href="{{ route('noon-report.edit', $report->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('noon-report.destroy', $report->id) }}" method="POST" style="display:inline-block;">
                             @csrf
