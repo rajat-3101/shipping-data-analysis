@@ -18,11 +18,16 @@ return new class extends Migration
 
             $table->foreignId('created_by')->constrained('users')->onDelete('restrict');
 
+            //report type
+            $table->foreignId('report_type_id')->nullable()->constrained('report_types')->onDelete('set null');
+
+
             // Report identification and timing
             $table->string('voyage_comes_under')->nullable(); 
             $table->timestamp('report_date');
             $table->time('utc_time');                    // UTC
             $table->time('time_correction')->nullable(); // Time correction from LT to UTC
+            $table->enum('vessel_condition',[1,2])->default(1);      //Ballast(1), Laden(2)
 
                                                      // Position
             $table->decimal('position_lat', 10, 3);  // Latitude with high precision

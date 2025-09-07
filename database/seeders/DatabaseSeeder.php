@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\ReportTypeSeeder;
 use Database\Seeders\FuelEmissionSeeder;
 use Database\Seeders\ShipCategorySeeder;
 use Database\Seeders\ShipCoefficientSeeder;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             FuelEmissionSeeder::class,
             VesselCategorySeeder::class,
             VesselCoefficientSeeder::class,
+            ReportTypeSeeder::class,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 <div class="container">
     <h1>Noon Reports</h1>
     <a href="{{ route('noon-report.create') }}" class="btn btn-primary mb-3">Add Noon Report</a>
+    <a href="{{ route('report-upload.create') }}" class="btn btn-success mb-3 ms-2">Upload Report</a>
     <table class="table table-bordered" id="noon-reports-table">
         <thead>
             <tr>

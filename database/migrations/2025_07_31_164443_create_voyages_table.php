@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('voyage_name', 200);
             // Ports and timing
             $table->string('port_of_loading', 200);
+            $table->tinyInteger('loading_port_eu')->default(0); // 0 => No, 1 => Yes
+
             $table->string('port_of_discharge', 200);
+            $table->tinyInteger('discharge_port_eu')->default(0); // 0 => No, 1 => Yes
 
             // Voyage dates
             $table->datetime('departure')->nullable();

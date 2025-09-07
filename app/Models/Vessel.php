@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Voyage;
 use App\Models\VesselCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -63,6 +64,12 @@ class Vessel extends Model
     {
         return $this->belongsTo(VesselCategory::class);
     }
+
+    public function voyages()
+    {
+        return $this->hasMany(Voyage::class);
+    }
+
     // Scopes
     // public function scopeByVesselType($query, $type)
     // {
