@@ -7,7 +7,7 @@ class NoonReportService
 {
     public function getAll()
     {
-        return NoonReport::with(['vessel', 'voyage', 'createdBy'])->get();
+        return NoonReport::with(['vessel', 'voyage', 'createdBy','reportType'])->get();
     }
 
     public function find($id)

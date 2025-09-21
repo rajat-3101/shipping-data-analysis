@@ -30,5 +30,8 @@ Route::group(['middleware'=> ["auth"]], function(){
     Route::get('report-upload/voyages', [App\Http\Controllers\ReportUploadController::class, 'getVoyages']);
     Route::get('performance', [App\Http\Controllers\PerformanceController::class, 'index'])->name('performance.index');
     Route::view('coming-soon', 'coming_soon')->name('coming-soon');
+    Route::get('vessel-monitoring/voyages', [App\Http\Controllers\VesselMonitoringController::class, 'getVoyages']);
+    Route::get('vessel-monitoring/noon-reports', [App\Http\Controllers\VesselMonitoringController::class, 'getNoonReports']);
+    Route::resource('vessel-monitoring', App\Http\Controllers\VesselMonitoringController::class)->only(['index']);
 });
 

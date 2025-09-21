@@ -51,7 +51,15 @@
                             <label for="report_date" class="form-label">Report Date <span class="text-danger">*</span></label>
                             <input type="datetime-local" class="form-control" id="report_date" name="report_date" required>
                         </div>
-                       
+                        <div class="mb-3">
+                            <label for="report_type_id" class="form-label">Report Type <span class="text-danger">*</span></label>
+                            <select name="report_type_id" id="report_type_id" class="form-control" required>
+                                <option value="">Select Type</option>
+                                @foreach($reportTypes as $type)
+                                    <option value="{{ $type->id }}">{{ $type->report_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
@@ -61,6 +69,21 @@
                         <div class="mb-3">
                             <label for="time_correction" class="form-label">Time Correction<span class="text-danger">*</span></label>
                             <input type="time" class="form-control" id="time_correction" name="time_correction">
+                        </div>
+                        <div class="mb-3">
+                            <label for="vessel_condition" class="form-label">Vessel Condition <span class="text-danger">*</span></label>
+                            <select name="vessel_condition" id="vessel_condition" class="form-control" required>
+                                <option value="Ballast" {{ old('vessel_condition') == 'Ballast' ? 'selected' : '' }}>Ballast</option>
+                                <option value="Laden" {{ old('vessel_condition') == 'Laden' ? 'selected' : '' }}>Laden</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cargo_type" class="form-label">Cargo Type</label>
+                            <input type="text" class="form-control" id="cargo_type" name="cargo_type" value="{{ old('cargo_type') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cargo_quantity" class="form-label">Cargo Quantity (MT)</label>
+                            <input type="number" step="0.001" class="form-control" id="cargo_quantity" name="cargo_quantity" value="{{ old('cargo_quantity') }}">
                         </div>
                     </div>
                 </div>

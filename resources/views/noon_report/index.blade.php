@@ -12,6 +12,7 @@
                 <th>Voyage</th>
                 <th>Date</th>
                 <th>Created By</th>
+                <th>Report Type</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                     <td>{{ $report->voyage->voyage_name ?? '-' }}</td>
                     <td>{{ $report->report_date }}</td>
                     <td>{{ $report->createdBy->name ?? '-' }}</td>
+                    <td>{{ $report->reportType->report_name ?? '-' }}</td>
                     <td>
                         <a href="{{ route('noon-report.show', $report->id) }}" class="btn btn-sm btn-info">View</a>
                         <a href="{{ route('noon-report.edit', $report->id) }}" class="btn btn-sm btn-warning">Edit</a>

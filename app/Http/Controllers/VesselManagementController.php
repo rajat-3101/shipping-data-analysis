@@ -57,7 +57,8 @@ class VesselManagementController extends Controller
     {
         try {
             $vessel = $this->vesselService->create($request->all());
-            return redirect()->route('vessel-management.index')->with('success', 'Vessel created successfully.');
+            toastr()->success('Vessel created successfully.');
+            return redirect()->route('vessel-management.index');
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back()->withErrors('Error creating vessel: ' . $e->getMessage());

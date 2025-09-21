@@ -18,40 +18,45 @@ return new class extends Migration
 
             $table->foreignId('created_by')->constrained('users')->onDelete('restrict');
 
-            //report type
+            // report type
             $table->foreignId('report_type_id')->nullable()->constrained('report_types')->onDelete('set null');
 
-
             // Report identification and timing
-            $table->string('voyage_comes_under')->nullable(); 
+            $table->string('voyage_comes_under')->nullable();
             $table->timestamp('report_date');
             $table->time('utc_time');                    // UTC
             $table->time('time_correction')->nullable(); // Time correction from LT to UTC
-            $table->enum('vessel_condition',[1,2])->default(1);      //Ballast(1), Laden(2)
 
-                                                     // Position
+            // Position
             $table->decimal('position_lat', 10, 3);  // Latitude with high precision
             $table->decimal('position_long', 11, 3); // Longitude with high precisio
 
             // Vessel Movement
             $table->enum('vessel_movement', ['At Sea', 'At Port'])->default('At Sea');
 
-                                                                               // Distance and Performance
+            //vessel condition
+            $table->enum('vessel_condition', ['Ballast', 'Laden'])->default('Ballast');
+
+            //Cargo details
+            $table->string('cargo_type')->nullable();
+            $table->decimal('cargo_quantity', 12, 3)->nullable(); // in Metric Tons
+
+            // Distance and Performance
             $table->decimal('observed_distance_since_last_noon_report', 8, 2)->nullable(); // Nautical miles
             $table->decimal('log_distance', 8, 2)->nullable();                 // Nautical miles
             $table->decimal('engine_distance', 8, 2)->nullable();              // Nautical miles
             $table->decimal('sog_slip', 5, 2)->nullable();                      // Percentage
             $table->decimal('log_slip', 5, 2)->nullable();                     // Percentage
 
-                                                                                  // Cumulative performance since FAOP
+            // Cumulative performance since FAOP
             $table->decimal('total_steaming_hours_since_faop', 8, 2)->nullable(); // Hours
             $table->decimal('total_distance_since_faop', 10, 2)->nullable();      // Nautical miles
 
-                                                                                // Distance to go
+            // Distance to go
             $table->decimal('distance_to_destination_port', 8, 2)->nullable();         // Nautical miles
             // $table->decimal('distance_to_final_destination', 8, 2)->nullable(); // Nautical miles
 
-                                                                           // Speed averages
+            // Speed averages
             $table->decimal('avg_speed_since_last_noon_report_sog', 5, 2)->nullable();  // Knots (Over Ground)
             $table->decimal('avg_speed_since_last_noon_report_log', 5, 2)->nullable(); // Knots (Log)
 
@@ -62,7 +67,7 @@ return new class extends Migration
             $table->decimal('engine_torque', 8, 2)->nullable(); // kNm
             $table->decimal('engine_load_percentage', 5, 2)->nullable();   // Percentage
 
-                                                                  // Weather Conditions
+            // Weather Conditions
             $table->decimal('seawater_temp', 5, 2)->nullable();   // Celsius
             $table->decimal('atmosphere_temp', 5, 2)->nullable(); // Celsius
             $table->enum('wind_direction', ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])->nullable();
@@ -72,19 +77,19 @@ return new class extends Migration
             $table->integer('sea_state', false, true)->nullable(); // 0-9 scale
             $table->decimal('beaufort_force', 5, 2)->nullable();   // 0-12 scale
 
-            //Marine Engine Fuel Consumption in tonnes
+            // Marine Engine Fuel Consumption in tonnes
             $table->decimal('me_hfo', 10, 2)->nullable();
             $table->decimal('me_lfo', 10, 2)->nullable();
             $table->decimal('me_vlsfo', 10, 2)->nullable();
             $table->decimal('me_mdo_mgo', 10, 2)->nullable();
 
-            //Auxiliary Engine Fuel Consumption in tonnes
+            // Auxiliary Engine Fuel Consumption in tonnes
             $table->decimal('ae_hfo', 10, 2)->nullable();
             $table->decimal('ae_lfo', 10, 2)->nullable();
             $table->decimal('ae_vlsfo', 10, 2)->nullable();
             $table->decimal('ae_mdo_mgo', 10, 2)->nullable();
 
-            //Bioler Fuel Consumption in tonnes
+            // Bioler Fuel Consumption in tonnes
             $table->decimal('boiler_hfo', 10, 2)->nullable();
             $table->decimal('boiler_lfo', 10, 2)->nullable();
             $table->decimal('boiler_vlsfo', 10, 2)->nullable();

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Vessel;
 use App\Models\Voyage;
-use App\Services\NoonReportService;
+use App\Models\ReportType;
 use Illuminate\Http\Request;
+use App\Services\NoonReportService;
 
 class NoonReportController extends Controller
 {
@@ -27,7 +28,8 @@ class NoonReportController extends Controller
         $vessels = Vessel::all();
         $voyages = Voyage::all();
         $users   = User::all();
-        return view('noon_report.create', compact('vessels', 'voyages', 'users'));
+         $reportTypes = ReportType::all();
+        return view('noon_report.create', compact('vessels', 'voyages','users' ,'reportTypes'));
     }
 
     public function store(Request $request)

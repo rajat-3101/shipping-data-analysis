@@ -84,11 +84,11 @@ return [
 
     'auth_logo' => [
         'enabled' => false,
-        'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'Auth Logo',
-            'class' => '',
-            'width' => 50,
+        'img'     => [
+            'path'   => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'alt'    => 'Auth Logo',
+            'class'  => '',
+            'width'  => 50,
             'height' => 50,
         ],
     ],
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'preloader' => [
+    'preloader'                               => [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
@@ -218,10 +218,10 @@ return [
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
-    'sidebar_scrollbar_auto_hide' => 'l',
-    'sidebar_nav_accordion' => true,
-    'sidebar_nav_animation_speed' => 300,
+    'sidebar_scrollbar_theme'                 => 'os-theme-light',
+    'sidebar_scrollbar_auto_hide'             => 'l',
+    'sidebar_nav_accordion'                   => true,
+    'sidebar_nav_animation_speed'             => 300,
 
     /*
     |--------------------------------------------------------------------------
@@ -303,43 +303,58 @@ return [
         // Sidebar items:
         [
             'text' => 'Dashboard',
-            'url' => 'dashboard',
+            'url'  => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'text' => 'Organization',
-            'url' => 'organization-management',
+            'url'  => 'organization-management',
             'icon' => 'fas fa-fw fa-globe',
         ],
         [
             'text' => 'Vessels Management',
-            'url' => 'vessel-management',
+            'url'  => 'vessel-management',
             'icon' => 'fas fa-fw fa-ship',
         ],
         [
             'text' => 'Voyages',
-            'url' => 'voyage',
+            'url'  => 'voyage',
             'icon' => 'fas fa-fw fa-plane',
         ],
         [
             'text' => 'Noon Report Data',
-            'url' => 'noon-report',
+            'url'  => 'noon-report',
             'icon' => 'fas fa-fw fa-database',
         ],
         [
-            'text' => 'Performance',
-            'url' => 'performance',
-            'icon' => 'fas fa-fw fa-chart-line',
+            'text' => 'Vessel Monitoring',
+            'url'  => 'vessel-monitoring',
+            'icon' => 'fas fa-fw fa-eye',
         ],
         [
-            'text' => 'Download',
-            'url' => 'coming-soon',
-            'icon' => 'fas fa-fw fa-download',
+            'text' => 'Performance',
+            'url'  => 'performance',
+            'icon' => 'fas fa-fw fa-chart-line',
         ],
         [
             'text' => 'CII RATING',
             'url' => 'cii-rating',
             'icon' => 'fas fa-fw fa-star',
+        ],
+        [
+            'text' => 'Position Trackering',
+            'url'  => 'coming-soon',
+            'icon' => 'fas fa-fw fa-map',
+        ],
+        [
+            'text' => 'Upload',
+            'url'  => 'coming-soon',
+            'icon' => 'fas fa-fw fa-upload',
+        ],
+        [
+            'text' => 'Download',
+            'url' => 'coming-soon',
+            'icon' => 'fas fa-fw fa-download',
         ],
         [
             'text' => 'EU ETS',

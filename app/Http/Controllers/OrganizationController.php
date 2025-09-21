@@ -39,6 +39,7 @@ class OrganizationController extends Controller
     {
         try {
             $organization = $this->organizationService->create($request->all());
+            toastr()->success('Organization created successfully.');
             return redirect()->route('organization-management.index');
         } catch (\Exception $e) {
             return response()->json(['error' => 'Error creating organization: ' . $e->getMessage()], 500);

@@ -35,11 +35,11 @@ class VoyageController extends Controller
 
     public function store(Request $request)
     {
-        // dd('here');
         $user = auth()->user();
 
         $this->voyageService->create($request->all());
-        return redirect()->route('voyage.index')->with('success', 'Voyage created successfully.');
+        toastr()->success('Voyage created successfully.');
+        return redirect()->route('voyage.index');
     }
 
     public function edit(Voyage $voyage)
